@@ -24,7 +24,7 @@ Each project represents a new milestone in my learning journey, focusing on the 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/python-learning-projects.git
+   git clone https://github.com/sheikh92areeb/py-projects.git
    ```
 2. Explore the different project folders to see the code and descriptions.   
 3. Run the Python scripts locally to see the projects in action.

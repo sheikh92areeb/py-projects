@@ -11,4 +11,4 @@ normalize_word = cleaned_string[::-1]
 if normalize_word == cleaned_string:
     print("It is Palindrome")
 else:
-    print("It is not Palindrome")    
+    print("It is not Palindrome")

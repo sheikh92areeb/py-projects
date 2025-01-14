@@ -8,7 +8,7 @@ print("5. Kilograms to Pounds")
 print("6. Pounds to Kilograms")
 
 while True:
-    user = int(input("Enter your Choice (1 to 6) or type 'exit' to quit: "))
+    user = input("Enter your Choice (1 to 6) or type 'exit' to quit: ")
 
     if user == 'exit':
         print("Goodbye! Thanks For Using")

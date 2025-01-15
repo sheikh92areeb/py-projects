@@ -12,15 +12,12 @@ while True:
 
     for i in user_word:
         if i in char_count:
-            char_count.update({i:+i})
+            char_count[i] += 1
         else:
-            char_count.update({i:1})    
+            char_count[i] = 1
 
-    if not char_count:
-        break       
-    else:
-        for key, value in char_count.items():
-            print(key, "=", value)
+    for key, value in char_count.items():
+        print(key, "=", value)
 
     choice = input("Do you want to count more? (y/n): ").strip().lower()        
     if choice != "y":

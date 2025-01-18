@@ -12,67 +12,63 @@ def get_user_choice():
             print("Invalid input! Please enter 'y' for yes or 'n' for no.")
 
 # Main Banking System Code
-print("Welcome! to Banking System")
+print("Welcome to the Banking System!")
 
-actions = [0,1,2,3]
+actions = [0, 1, 2, 3]
 balance = 1000
 
 while True:
-    print("\nPerforming Actions:")
-    print("1- Deposit money")
-    print("2- Withdraw money")
-    print("3- Check balance")
-    print("0- Exit")
-    user = int(input("Enter your Action (1-3) or 0: "))
+    print("\n=== Banking Menu ===")
+    print("1 - Deposit money")
+    print("2 - Withdraw money")
+    print("3 - Check balance")
+    print("0 - Exit")
+    print("====================")
 
-    if user not in actions:
-        print("Invalid Action, Please Enter between 1-3 or 0")
-        continue
-    else:
-        if user == 0:
+    try:
+        user_action = int(input("Enter your action (1-3) or 0: "))
+
+        if user_action not in actions:
+            print("Invalid action. Please enter a number between 0 and 3.")
+            continue
+
+        if user_action == 0:
             print("Goodbye! Thanks for using the Banking System!")
             break
-        elif user == 3:
-            print(f"Your Current Balance is: ${balance}")
-        elif user == 2:
+        elif user_action == 3:
+            print(f"Your current balance is: ${balance}")
+            continue
+        elif user_action == 2:
             while True:
                 try:
-                    amount_withdraw = int(input("Enter Withdrawal Amount: $"))
-
+                    amount_withdraw = int(input("Enter withdrawal amount: $"))
                     if amount_withdraw > balance:
-                        print("Insufficient balance,")
-                        print(f"Your Current Balance is: ${balance}")
-                        print("Please! Enter Amount Under your balance")
-                        continue
+                        print(f"Insufficient balance. Your current balance is: ${balance}.")
+                        print("Please enter an amount within your available balance.")
                     elif amount_withdraw <= 0:
-                        print("Please Enter a Positive Amount.")
-                        continue
+                        print("Please enter a positive amount.")
                     else:
-                        print(f"${amount_withdraw} is Successfully Withdraw")
-                        balance = balance - amount_withdraw
-                        print(f"Your updated balance is: ${balance}")
+                        balance -= amount_withdraw
+                        print(f"${amount_withdraw} successfully withdrawn.")
+                        print(f"Your updated balance is: ${balance}.")
                         break
-
                 except ValueError:
                     print("Invalid input! Please enter a valid number.")
-                    continue
-        elif user == 1:
+        elif user_action == 1:
             while True:
                 try:
-                    amount_deposit = int(input("Enter Amount to Deposit: $"))
-
-                    if 0 > amount_deposit:
-                        print("Please! Enter a Positive Amount")
-                        continue
+                    amount_deposit = int(input("Enter amount to deposit: $"))
+                    if amount_deposit <= 0:
+                        print("Please enter a positive amount.")
                     else:
-                        print(f"You successfully deposited ${amount_deposit}")
-                        balance = balance + amount_deposit
-                        print(f"Your updated balance is: ${balance}")
+                        balance += amount_deposit
+                        print(f"${amount_deposit} successfully deposited.")
+                        print(f"Your updated balance is: ${balance}.")
                         break
-                    
                 except ValueError:
                     print("Invalid input! Please enter a valid number.")
-                    continue   
+    except ValueError:
+        print("Invalid input! Please enter a number.")
 
     # Call the reusable function for Yes/No confirmation
     choice = get_user_choice()

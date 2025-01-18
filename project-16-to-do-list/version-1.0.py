@@ -44,7 +44,7 @@ while True:
             while True:
                 task_index = int(input("Enter Index of task to update: "))
 
-                if task_list[task_index] not in task_list:
+                if task_index < 0 or task_index >= len(task_list):
                     print("Invalid Index, Please Enter a Valid Index")
                     continue
                 else:
@@ -59,7 +59,7 @@ while True:
             while True:
                 task_index = int(input("Enter Index of task to update: "))
 
-                if task_list[task_index] not in task_list:
+                if task_index < 0 or task_index >= len(task_list):
                     print("Invalid Index, Please Enter a Valid Index")
                     continue
                 else:
@@ -70,6 +70,7 @@ while True:
                             break
                         else:
                             print("Invalid input! Please enter 'y' for yes or 'n' for no.")
+                            
                     if del_task == "y":
                         print("Task has been deleted successfully")
                         del task_list[task_index]

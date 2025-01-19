@@ -26,7 +26,7 @@ while True:
         if user_action == 1:
             while True:
                 key = input("Enter Name: ").strip()
-                value = int(input("Enter Number: "))
+                value = input("Enter Number: ").strip()
 
                 if value.isdigit():
                     contact_list.update({key:value})
@@ -41,7 +41,7 @@ while True:
             if key not in contact_list:
                 print("No Result Found")
             else:
-                print(contact_list.items(key))
+                print(contact_list[key])
         elif user_action == 3:
             while True:
                 key = input("Enter Name: ").strip()
@@ -50,7 +50,7 @@ while True:
                     print(f"{key}: is not exist")
                     continue
                 else:
-                    value = int(input("Update Number: "))
+                    value = input("Update Number: ").strip()
 
                     if value.isdigit():
                         contact_list.update({key:value})
@@ -83,18 +83,19 @@ while True:
             if not contact_list:
                 print("No Contact Available")
             else:
-                for key in contact_list:
-                    print(contact_list.items(key))
+                for key, value in contact_list:
+                    print(f"Name: {key}: Number : {value}")
+
+
+        choice = input("Do you want to use again? (y/n): ").lower().strip()
+        while True:
+            if choice in ["y","n"]:
+                break
+            else:
+                print("Invalid input! Please enter 'y' for yes or 'n' for no.")
+        if choice != "y":
+            print("Goodbye! Thanks for using contact book")
+            break            
     except ValueError:
         print("Invalid Input, Please Enter number between 1-5 or 0 to exit.")
         continue
-
-    choice = input("Do you want to use again? (y/n): ").lower().strip()
-    while True:
-        if choice in ["y","n"]:
-            break
-        else:
-            print("Invalid input! Please enter 'y' for yes or 'n' for no.")
-    if choice != "y":
-        print("Goodbye! Thanks for using contact book")
-        break

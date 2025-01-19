@@ -36,12 +36,15 @@ while True:
                     print("Invalid Number, Please Enter Valid Number")
                     continue
         elif user_action == 2:
-            key = input("Search Contact: ").strip()
 
-            if key not in contact_list:
-                print("No Result Found")
+            if not contact_list:
+                print("No Contact Available")
             else:
-                print(contact_list[key])
+                key = input("Search Contact: ").strip()
+                if key not in contact_list:
+                    print("No Result Found")
+                else:
+                    print(contact_list[key])
         elif user_action == 3:
             while True:
                 key = input("Enter Name: ").strip()
@@ -67,13 +70,14 @@ while True:
                     print(f"{key}: is not exist")
                     continue
                 else:
-                    print(contact_list.items(key))
-                    confirm = input("Are you sure to delete? (y/n): ").strip().lower()
+                    print(f"Name: {key}, Number: {contact_list[key]}")
                     while True:
+                        confirm = input("Are you sure to delete? (y/n): ").strip().lower()
                         if confirm in ["y", "n"]:
                             break
                         else:
                             print("Invalid input! Please enter 'y' for yes or 'n' for no.")
+                            continue
                     if confirm == "y":
                         del contact_list[key]
                         print("Contact has been deleted successfully")
@@ -83,16 +87,17 @@ while True:
             if not contact_list:
                 print("No Contact Available")
             else:
-                for key, value in contact_list:
+                for key, value in contact_list.items():
                     print(f"Name: {key}: Number : {value}")
 
 
-        choice = input("Do you want to use again? (y/n): ").lower().strip()
         while True:
+            choice = input("Do you want to use again? (y/n): ").lower().strip()
             if choice in ["y","n"]:
                 break
             else:
                 print("Invalid input! Please enter 'y' for yes or 'n' for no.")
+                continue
         if choice != "y":
             print("Goodbye! Thanks for using contact book")
             break            

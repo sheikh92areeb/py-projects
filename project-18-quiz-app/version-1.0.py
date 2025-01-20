@@ -4,6 +4,7 @@ print("Let's Play!\n")
 
 user_score = 0
 answers = ["a","b","c","d"]
+question_id = 1
 
 questions = {
     "q-1": {"question":"What is the capital of France?", 
@@ -15,13 +16,10 @@ questions = {
     "answer": "a" }
 }
 
-q = 1
-
 while True:
-    print(f"Here is Question:{q}")
-    q += 1
-
     for key, value in questions.items():
+        print(f"Here is Question:{question_id}")
+        question_id += 1
         print(f"Question: {value['question']}")
         print("Options:")
         for option in value["options"]:

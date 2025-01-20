@@ -9,11 +9,11 @@ answers = ["a","b","c","d"]
 question_id = 1
 
 questions = {
-    "q-1": {"question":"What is the capital of France?", 
+    "Q-1": {"question":"What is the capital of France?", 
     "options": ["A. Berlin", "B. Madrid", "C. Paris", "D. Rome"], 
     "answer": "c" },
 
-    "q-2": {"question":"What is the national language of U.K?", 
+    "Q-2": {"question":"What is the national language of U.K?", 
     "options": ["A. English", "B. Spanish", "C. French", "D. Roman"],
     "answer": "a" }
 }
@@ -46,6 +46,20 @@ while True:
 
     print("Quiz Over!")
     print("Game Summary")
+    print("Correct Answers:")
+    if not correct_answers:
+        print("No Answer is correct\n")
+    else:
+        for i in correct_answers:
+            print(f"{i} is correct")
+
+    print("\nWrong Answers:")
+    if not wrong_answers:
+        print("Great! No Answer is Wrong\n")
+    else:
+        for i in wrong_answers:
+            print(f"{i} is wrong")
+
     if user_score == 0:
         print(f"Your Score is {user_score}, Better Luck Next Time\n")
     else:

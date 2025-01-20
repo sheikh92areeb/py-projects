@@ -1,12 +1,12 @@
 print("Welcome! to Quiz App")
 print("Answer simple questions and get points")
-print("Let's Play!\n")
+print("Let's Play!")
+print("-" * 40)
 
 user_score = 0
 correct_answers = []
 wrong_answers = []
 answers = ["a","b","c","d"]
-question_id = 1
 
 questions = {
     "Q-1": {"question":"What is the capital of France?", 
@@ -20,6 +20,7 @@ questions = {
 
 while True:
     for idx, (key, value) in enumerate(questions.items(), 1):
+        print("-" * 40)
         print(f"Here is Question: {idx}")
         print(f"Question: {value['question']}")
         print("Options:")
@@ -36,7 +37,7 @@ while True:
                 break
 
         if user_answer == value["answer"]:
-            print("Correct Answer, Great Job\n")
+            print("Correct Answer, Great Job!\n")
             user_score += 10
             correct_answers.append(key)
         else:
@@ -44,8 +45,12 @@ while True:
             print(f"Correct Answer is {value['answer']}\n")
             wrong_answers.append(key)
 
+    print("-" * 40)
     print("Quiz Over!")
+    print("-" * 40)
+
     print("Game Summary")
+    print("-" * 40)
     print("Correct Answers:")
     if not correct_answers:
         print("No Answer is correct\n")
@@ -60,22 +65,27 @@ while True:
         for i in wrong_answers:
             print(f"{i} is wrong")
 
+    print("-" * 40)
     if user_score == 0:
         print(f"Your Score is {user_score}, Better Luck Next Time\n")
     else:
-        print(f"Your Score is {user_score}, You Played Well!\n")    
+        print(f"Your Score is {user_score}, You Played Well!\n")
+    print("-" * 40)
 
-    correct_answers.clear()
-    wrong_answers.clear()
-    user_score = 0
-    
     while True:
         choice = input("Do you want to play again? (y/n): ")
-        if choice in ["y","n"]:
+        if choice in ["y", "n"]:
             break
         else:
             print("Invalid Choice, Please Enter 'y' for yes or 'n' for no")
             continue
+
     if choice != "y":
+        print("-" * 40)
         print("Goodbye! Thanks For Playing")
         break
+    else:
+        # Reset the data for replay
+        correct_answers.clear()
+        wrong_answers.clear()
+        user_score = 0

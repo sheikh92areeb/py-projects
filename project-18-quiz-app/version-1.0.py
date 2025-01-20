@@ -17,9 +17,8 @@ questions = {
 }
 
 while True:
-    for key, value in questions.items():
-        print(f"Here is Question:{question_id}")
-        question_id += 1
+    for idx, (key, value) in enumerate(questions.items(), 1):
+        print(f"Here is Question: {idx}")
         print(f"Question: {value['question']}")
         print("Options:")
         for option in value["options"]:

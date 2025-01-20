@@ -3,6 +3,8 @@ print("Answer simple questions and get points")
 print("Let's Play!\n")
 
 user_score = 0
+correct_answers = []
+wrong_answers = []
 answers = ["a","b","c","d"]
 question_id = 1
 
@@ -36,11 +38,14 @@ while True:
         if user_answer == value["answer"]:
             print("Correct Answer, Great Job\n")
             user_score += 10
+            correct_answers.append(key)
         else:
             print("Wrong Answer")
             print(f"Correct Answer is {value['answer']}\n")
+            wrong_answers.append(key)
 
     print("Quiz Over!")
+    print("Game Summary")
     if user_score == 0:
         print(f"Your Score is {user_score}, Better Luck Next Time\n")
     else:

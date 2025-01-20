@@ -11,8 +11,6 @@ def unit_conversion(value, current_unit , convert_unit):
         return (value - 32) * 5/9 + 273.15
     elif current_unit == 3 and convert_unit == 2:
         return (value - 273.15) * 9/5 + 32
-    else:
-        return "Invalid Units"
 
 print("Welcome! to Temperature Concertor App")
 print("Type 1 for 'Celsius', 2 for 'Fahrenheit', 3 for 'Kelvin'")

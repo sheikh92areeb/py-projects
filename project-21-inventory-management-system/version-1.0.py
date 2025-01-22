@@ -5,7 +5,7 @@ inventory = {}
 actions = { 1:"add", 2:"update", 3:"remove", 4:"view", 0:"exit" }
 
 while True:
-    print("Select Action:")
+    print("\nSelect Action:")
     print("1. Add a new item")
     print("2. Update an item's quantity")
     print("3. Remove an item")
@@ -16,7 +16,7 @@ while True:
         user_action = int(input("Enter your action: "))
 
         if user_action not in actions:
-            print("Invalid Action, Please Enter action between 1-4 or 0 for exit")
+            print("Invalid Action, Please Enter action between 1-4 or 0 for exit\n")
             continue
         else:
             if user_action == 0:
@@ -33,8 +33,8 @@ while True:
                             print("Please Enter Positive Value")
                             continue
                         else:
-                            inventory = {key:value}
-                            print(f"{key} has been added successfully")
+                            inventory.update({key:value})
+                            print(f"{key} has been added successfully\n")
                             break
             elif user_action == 2:
                 while True:
@@ -52,8 +52,8 @@ while True:
                             print("Please Enter Positive Value")
                             continue
                         else:
-                            inventory = {key:value}
-                            print(f"{key}'s Quantity has been updated successfully")
+                            inventory.update({key:value})
+                            print(f"{key}'s Quantity has been updated successfully\n")
                             break
             elif user_action == 3:
                 while True:
@@ -73,7 +73,7 @@ while True:
                                 continue
                         if confirm == "y":
                             del inventory[key]
-                            print(f"{key} has been removed successfully")
+                            print(f"{key} has been removed successfully\n")
                             break
                         else:
                             break
@@ -82,12 +82,16 @@ while True:
                     print("No Item Available")
                     continue
                 else:
+                    print("\nCurrent Inventory:")
+                    print(f"{'Item Name':<20}{'Quantity':<10}")
+                    print("-" * 30)
                     for key, value in inventory.items():
-                        print(f"Item : {key} Quantity : {value}")
-                    continue    
+                        print(f"{key:<20}{value:<10}")
+                    print("-" * 30)   
+                    continue
 
     except ValueError:
-        print("Invalid Input, Please Enter action between 1-4 or 0 for exit")
+        print("Invalid Input, Please Enter action between 1-4 or 0 for exit\n")
         continue
     
     while True:
@@ -95,7 +99,7 @@ while True:
         if choice in ["y","n"]:
             break
         else:
-            print("Invalid Choice, Type 'y' for yes or 'n' for no")
+            print("Invalid Choice, Type 'y' for yes or 'n' for no\n")
             continue
     if choice != "y":
         print("Goodbye! Thanks For Using Inventory System")

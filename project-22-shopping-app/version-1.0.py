@@ -3,7 +3,6 @@ print("Welcome! to Shopping Store")
 actions = [1,2,3,0]
 products = { "shirt":500, "pants":700, "shoes":400, "watch":200, "glasses":150, "suit":1200, "coat":570}
 cart = {}
-total_cost = []
 
 print("\nShopping Products:")
 print(f"{'Product Name':<20}{'Price':<10}")
@@ -49,7 +48,7 @@ while True:
                 else:
                     print("Item not in Stock")
                     continue
-
+         
         if user_action == 2 or user_action == 3:
             if not cart:
                 print("Your Cart is Empty")
@@ -63,10 +62,9 @@ while True:
                 for key, value in cart.items():
                     item_total = products[key] * value
                     print(f"{key.capitalize():<20}{value:<10}{products[key]:<15}{item_total:<10}")
-                    total_cost.append(item_total)
                 print("-" * 60)
-                grand_total = list(map(int, total_cost))
-                print(f"{"":<20}{"":<10}{'Total Price':<15}{sum(grand_total):<10}")
+                total_cost = sum(products[key] * value for key, value in cart.items())
+                print(f"{"":<20}{"":<10}{'Total Price':<15}{total_cost:<10}")
                 print("-" * 60)
                 print("\n")
                 while True:
@@ -78,19 +76,8 @@ while True:
                         continue
                 if checkout == "y":
                     print("Checkout Successfully")
-                    cart.clear()
-                    total_cost.clear()
-
-        while True:
-            choice = input("Do you want to Shop again? (y/n): ").lower().strip()
-            if choice in ["y","n"]:
-                break
-            else:
-                print("Invalid Choice! type 'y' for yes or 'n' for no")
-                continue
-        if checkout != "y":
-            print("Goodbye! Thanks For Shopping")
-            break
+                    print("Goodbye! Thanks For Shopping")
+                    break
 
     except ValueError:
         print("Invalid Input! Please Enter between 1-3 or 0 for exit\n")

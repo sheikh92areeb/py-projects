@@ -37,10 +37,66 @@ while True:
                             print(f"{key} has been added successfully")
                             break
             elif user_action == 2:
-                                
+                while True:
+                    key = input("Enter Item Name: ").strip()
 
+                    if key not in inventory:
+                        print(f"{key} is not Exist")
+                        continue
+                    else:
+                        old_value = inventory[key]
+                        print(f"Item: {key} Quantity: {old_value}")
+                        value = int(input("Update Item Quantity: "))
+
+                        if 0 > value:
+                            print("Please Enter Positive Value")
+                            continue
+                        else:
+                            inventory = {key:value}
+                            print(f"{key}'s Quantity has been updated successfully")
+                            break
+            elif user_action == 3:
+                while True:
+                    key = input("Enter Item Name: ").strip()
+
+                    if key not in inventory:
+                        print(f"{key} is not Exist")
+                        continue
+                    else:
+                        print(f"Item: {key} Quantity: {inventory[key]}")
+                        while True:
+                            confirm = input("Are you sure to delete? (y/n):").lower().strip()
+                            if confirm in ["y","n"]:
+                                break
+                            else:
+                                print("Invalid Choice, Type 'y' for yes or 'n' for no")
+                                continue
+                        if confirm == "y":
+                            del inventory[key]
+                            print(f"{key} has been removed successfully")
+                            break
+                        else:
+                            break
+            elif user_action == 4:
+                if not inventory:
+                    print("No Item Available")
+                    continue
+                else:
+                    for key, value in inventory.items():
+                        print(f"Item : {key} Quantity : {value}")
+                    continue    
 
     except ValueError:
         print("Invalid Input, Please Enter action between 1-4 or 0 for exit")
         continue
     
+    while True:
+        choice = input("Do you want to use again? (y/n): ").lower().strip()
+        if choice in ["y","n"]:
+            break
+        else:
+            print("Invalid Choice, Type 'y' for yes or 'n' for no")
+            continue
+    if choice != "y":
+        print("Goodbye! Thanks For Using Inventory System")
+        break

@@ -47,3 +47,43 @@ if uploaded_files:
                     numeric_cols = df.select_dtypes(include=["number"]).columns
                     df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
                     st.write("Missing Values have been Filled!")
+
+        # Choose specific column to keep or convert
+        st.subheader("Select Columns to Convert")
+        columns = st.multiselect(f"Choose Columns for {file.name}", df.columns, default=df.columns)
+        df = df[columns]
+
+
+        # Create some visualizations 
+        st.subheader("Data Visualization")
+        if st.checkbox(f"Show Visualization for {file.name}"):
+            st.bar_chart(df.select_dtypes(include="number").iloc[:,:2])
+
+
+        # Convert Files
+        st.subheader("Conversion Options")
+        conversion_type = st.radio(f"Convert {file.name} to:", ["CSV", "Excel"], key=file.name)
+        if st.button(f"Convert {file.name}"):
+            buffer = BytesIO()
+
+            if conversion_type == "CSV":
+                df.to_csv(buffer, index=False)
+                file_name = file.name.replace(file_ext, ".csv")
+                mime_type = "text/csv"
+
+            elif conversion_type == "Excel":
+                df.to_excel(buffer, index=False)
+                file_name = file.name.replace(file_ext, ".xlsx")
+                mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+            buffer.seek(0)
+
+            # Download file
+            st.download_button(
+                label=f"Download {file.name} as {conversion_type}",
+                data=buffer,
+                file_name=file_name,
+                mime=mime_type
+            )
+
+st.success("All Files Processed!")            
